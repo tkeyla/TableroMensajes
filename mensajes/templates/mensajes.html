@@ -9,7 +9,7 @@
     <h1>Mensajes</h1>
     <ul>
         {%for mensaje in mensajes%}
-            <li>{{mensaje.texto}}:{{mensaje.remitente}}</li>
+            <li>{{mensaje.texto}}: {{mensaje.remitente}} - {{mensaje.fecha_y_hora}}</li>
         {%endfor%}
     </ul>
 </body>
