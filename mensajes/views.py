@@ -3,7 +3,7 @@ from .models import Mensaje
 from .templates import *
 # Create your views here.
 
-def buscar_remitente (request):
+def filtrar (request):
     return render (request, 'home.html')
 
 def ver_mensajes(request):
