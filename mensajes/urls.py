@@ -3,5 +3,5 @@ from .import views
 
 urlpatterns = [ 
     path('', views.buscar_remitente, name='home'),
-    path('vermensajes', views.ver_mensajes, name='ver_mensajes')
+    path('mensajes/recibidos', views.ver_mensajes, name='ver_mensajes')
 ]
