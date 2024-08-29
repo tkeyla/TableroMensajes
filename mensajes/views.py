@@ -7,6 +7,12 @@ def buscar_remitente (request):
     return render (request, 'home.html')
 
 def ver_mensajes(request):
-    remitente = request.GET.get('remitente')
-    mensajes = Mensaje.objects.filter(remitente = remitente)
+    filtro = request.GET.get('filtro')
+    
+    if filtro == 'todos':
+        mensajes = Mensaje.objects.all()
+    else: 
+        nombre = request.GET.get('nombre')
+        filtro = {filtro: nombre}
+        mensajes = Mensaje.objects.filter(**filtro)
     return render(request, 'mensajes.html',{'mensajes': mensajes})

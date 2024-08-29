@@ -9,12 +9,16 @@
 </head>
 <body>
     <h1>Mensajes</h1>
-    {%for mensaje in mensajes%}
-        <div>
-            <p>{{mensaje.texto}}</p>
-            <span>De: {{mensaje.remitente}} A: {{mensaje.destinatario}} - {{mensaje.fecha_y_hora}}</span>
-        </div>
-    {%endfor%}
+    {%if mensajes%}
+        {%for mensaje in mensajes%}
+            <div>
+                <p>{{mensaje.texto}}</p>
+                <span>De: {{mensaje.remitente}} A: {{mensaje.destinatario}} - {{mensaje.fecha_y_hora}}</span>
+            </div>
+        {%endfor%}
+    {%else%}
+        <h2 color="white">No hay mensajes que coincidan con este filtro&excl;</h2><br>
+    {%endif%}
     <button><a href="/">Volver</a></button>
 </body>
 </html>

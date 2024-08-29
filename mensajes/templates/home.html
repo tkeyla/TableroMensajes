@@ -6,11 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor Mensajes</title>
     <link rel="stylesheet" href="{% static 'mensajes/style.css' %}">
+    <script lang="JavaScript">
+        document.addEventListener("DOMContentLoaded", function (){
+            remitente = document.getElementById("remitente");
+            destinatario = document.getElementById("destinatario");
+            todos = document.getElementById("todos");
+
+            remitente.addEventListener("click", buscarNombre);
+            destinatario.addEventListener("click", buscarNombre);
+            todos.addEventListener("click", buscarNombre);
+        })
+
+        function buscarNombre (){
+            mostrar = remitente.checked || destinatario.checked;
+            document.getElementById("pedirnombre").style.display = mostrar ? "inline" : "none";
+            input = document.getElementById("inputnombre").style.display = mostrar ? "inline" : "none";
+            if (mostrar == true){
+                document.getElementById("inputnombre").setAttribute('required', 'required');
+            }else {
+                document.getElementById("inputnombre").removeAttribute('required');
+            }
+        }
+    </script>
 </head>
 <body>
+    <h1>Bienvenido a su tablero de mensajes&excl;</h1>
     <form action="vermensajes">
-        <h1>Ingrese un remitente para buscar sus mensajes!</h1>
-        <input type="text" name="remitente">
+        <span>Seleccione una opci&oacute; para filtrar sus mensajes.</span><br>
+        <input type="radio" name="filtro" value="todos" id="todos">
+        <label for="todos">Mostrar todos</label> 
+        <input type="radio" name="filtro" value="remitente" id="remitente" onclick= "<script lang='JavaScript'>buscarNombre()</script>">
+        <label for="remitente">Remitente</label> 
+        <input type="radio" name="filtro" value="destinatario" id="destinatario">
+        <label for="destinatario">Destinatario</label><br>
+        <span id="pedirnombre">Ingrese el nombre del remitente/destinatario.</span><br>
+        <input type="text" name="nombre" id="inputnombre"><br>
         <input type="submit" value="buscar">
     </form>
 </body>
